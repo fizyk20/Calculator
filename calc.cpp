@@ -61,7 +61,7 @@ int main()
 	string expr;
 	init_function_table();
 
-	while(expr!="quit")
+	while(expr!="quit" && !cin.eof())
 	{
 		cout << "> ";
 		cin.getline(line,5000);
