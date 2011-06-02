@@ -2,8 +2,8 @@
 #include "parser.h"
 #include <fstream>
 #include <sstream>
-#include <windows.h>
 #include "variables.h"
+#include <time.h>
 
 #define VER "0.8"
 
@@ -53,7 +53,7 @@ int main()
 	string last_request;
 	int file_no = 0;
 	char line[5000];
-	ulong t;
+	clock_t t;
 
 	cout << "Calculator v" << VER << " by Fizyk" << endl;
 	cout << "Type 'help' to get help." << endl;
@@ -86,7 +86,7 @@ int main()
 			string c_result = last_result.toString();
 			fout << "Request: " << last_request << endl << endl << "Result:" << endl;
 			fout << c_result << endl << endl;
-			fout << "Calculated in: " << t/1000.0 << " seconds." << endl;
+			fout << "Calculated in: " << (double)t/CLOCKS_PER_SEC << " seconds." << endl;
 			fout.close();
 			cout << "Saved to file " << name << endl;
 			continue;
@@ -107,11 +107,11 @@ int main()
 			expr.erase(i,1);
 		}
 
-		t = GetTickCount();
+		t = clock();
 
 		Complex result = parse_expression(expr);
 
-		t = GetTickCount() - t;
+		t = clock() - t;
 
 		if(Error()) {
 			cout << "Parse error." << endl;
