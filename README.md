@@ -4,12 +4,11 @@
 Well, try getting a regular calculator and tell it to calculate, for example, the square root of 2. Most calculators will just say `1.414213562`. A better calculator will give you more decimal places. This calculator will give you as many decimal places, as you wish - limited only by available memory, and, probably more important - by time of calculation :p Just use the `setprec()` function to set the desired precision and calculate whatever you want.
 
 ## Compiling
-Compiles fine with G++:
-g++ -o calc *.cpp
-or, in Windows:
-g++ -o calc.exe *.cpp
+Makefile is included, so just type:
 
-Should compile on VC++ too.
+    make
+
+(Requires GCC. It should also compile with other compilers, though.)
 
 ## Usage
 Type `help` to see a list of available functions. `list_vars` lists defined variables.
